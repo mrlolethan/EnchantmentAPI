@@ -1,4 +1,4 @@
-package com.rit.sucy.Anvil;
+package com.rit.sucy.anvil;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;

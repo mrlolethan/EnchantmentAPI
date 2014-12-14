@@ -1,9 +1,10 @@
 package com.rit.sucy.enchanting;
 
-import com.rit.sucy.CustomEnchantment;
+import java.util.Map;
+
 import org.bukkit.inventory.ItemStack;
 
-import java.util.Map;
+import com.rit.sucy.CustomEnchantment;
 
 public class EnchantResult {
 

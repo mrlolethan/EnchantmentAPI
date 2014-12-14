@@ -1,14 +1,13 @@
 package com.rit.sucy;
 
-import com.rit.sucy.Anvil.AnvilListener;
-import com.rit.sucy.commands.Commander;
-import com.rit.sucy.config.RootConfig;
-import com.rit.sucy.enchanting.*;
-import com.rit.sucy.lore.LoreConfig;
-import com.rit.sucy.service.ENameParser;
-import com.rit.sucy.service.ERomanNumeral;
-import com.rit.sucy.service.IModule;
-import com.rit.sucy.service.PermissionNode;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -21,7 +20,18 @@ import org.bukkit.permissions.Permissible;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.*;
+import com.rit.sucy.anvil.AnvilListener;
+import com.rit.sucy.commands.Commander;
+import com.rit.sucy.config.RootConfig;
+import com.rit.sucy.enchanting.EEquip;
+import com.rit.sucy.enchanting.EListener;
+import com.rit.sucy.enchanting.VanillaData;
+import com.rit.sucy.enchanting.VanillaEnchantment;
+import com.rit.sucy.lore.LoreConfig;
+import com.rit.sucy.service.ENameParser;
+import com.rit.sucy.service.ERomanNumeral;
+import com.rit.sucy.service.IModule;
+import com.rit.sucy.service.PermissionNode;
 
 /**
  * Contains methods to register and access custom enchantments

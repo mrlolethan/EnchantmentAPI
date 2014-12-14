@@ -1,14 +1,15 @@
 package com.rit.sucy.commands;
 
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
 import com.rit.sucy.CustomEnchantment;
 import com.rit.sucy.EnchantmentAPI;
 import com.rit.sucy.service.ENameParser;
 import com.rit.sucy.service.ICommand;
 import com.rit.sucy.service.PermissionNode;
-import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 /**
  * Adds an enchantment to an item

@@ -1,13 +1,14 @@
 package com.rit.sucy.enchanting;
 
-import com.rit.sucy.EnchantmentAPI;
-import com.rit.sucy.service.ENameParser;
+import java.util.Hashtable;
+
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.Hashtable;
+import com.rit.sucy.EnchantmentAPI;
+import com.rit.sucy.service.ENameParser;
 
 /**
  * Handles keeping track of player equipment for Equip and Unequip enchantment effects

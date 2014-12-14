@@ -1,9 +1,9 @@
 package com.rit.sucy.config;
 
+import java.util.Collections;
+
 import com.rit.sucy.CustomEnchantment;
 import com.rit.sucy.service.ConfigNode;
-
-import java.util.Collections;
 
 /**
  * @author Diemex

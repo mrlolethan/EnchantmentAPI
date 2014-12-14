@@ -1,18 +1,23 @@
 package com.rit.sucy.config;
 
-import com.rit.sucy.CustomEnchantment;
-import com.rit.sucy.EnchantmentAPI;
-import com.rit.sucy.enchanting.VanillaEnchantment;
-import com.rit.sucy.service.MaterialsParser;
-import com.rit.sucy.service.ModularConfig;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.*;
+import com.rit.sucy.CustomEnchantment;
+import com.rit.sucy.EnchantmentAPI;
+import com.rit.sucy.enchanting.VanillaEnchantment;
+import com.rit.sucy.service.MaterialsParser;
+import com.rit.sucy.service.ModularConfig;
 
 /**
  * Configuration handler for the root config.yml file.

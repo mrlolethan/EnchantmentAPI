@@ -1,12 +1,10 @@
 package com.rit.sucy.service;
 
-import org.bukkit.Material;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
+
+import org.bukkit.Material;
 
 /**
  * Parses a given StringList into an Material array

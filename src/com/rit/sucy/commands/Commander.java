@@ -1,12 +1,13 @@
 package com.rit.sucy.commands;
 
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+
 import com.rit.sucy.EnchantmentAPI;
 import com.rit.sucy.service.CommandHandler;
 import com.rit.sucy.service.ICommand;
 import com.rit.sucy.service.PermissionNode;
-import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 
 public class Commander extends CommandHandler
 {

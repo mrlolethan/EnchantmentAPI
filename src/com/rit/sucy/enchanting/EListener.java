@@ -1,12 +1,11 @@
 package com.rit.sucy.enchanting;
 
-import com.rit.sucy.CustomEnchantment;
-import com.rit.sucy.EnchantmentAPI;
-import com.rit.sucy.config.LanguageNode;
-import com.rit.sucy.config.RootConfig;
-import com.rit.sucy.config.RootNode;
-import com.rit.sucy.service.ENameParser;
-import com.rit.sucy.service.PermissionNode;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
+
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -27,13 +26,22 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.event.player.*;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerItemBreakEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.EnchantingInventory;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.*;
+import com.rit.sucy.CustomEnchantment;
+import com.rit.sucy.EnchantmentAPI;
+import com.rit.sucy.config.LanguageNode;
+import com.rit.sucy.config.RootConfig;
+import com.rit.sucy.config.RootNode;
+import com.rit.sucy.service.ENameParser;
+import com.rit.sucy.service.PermissionNode;
 
 /**
  * Listens for events and passes them onto enchantments
@@ -83,7 +91,7 @@ public class EListener implements Listener {
 
         LivingEntity damaged = (LivingEntity)event.getEntity();
         LivingEntity damager = event.getDamager() instanceof LivingEntity ? (LivingEntity) event.getDamager()
-                : event.getDamager() instanceof Projectile ? ((Projectile)event.getDamager()).getShooter()
+                : event.getDamager() instanceof Projectile ? (LivingEntity) ((Projectile)event.getDamager()).getShooter()
                 : null;
         if (event.getCause() != EntityDamageEvent.DamageCause.ENTITY_ATTACK
                 && event.getCause() != EntityDamageEvent.DamageCause.PROJECTILE) return;
@@ -252,8 +260,8 @@ public class EListener implements Listener {
     public void onProjectile(ProjectileLaunchEvent event) {
         if (event.getEntity().getShooter() == null)
             return;
-        for (Map.Entry<CustomEnchantment, Integer> entry : getValidEnchantments(getItems(event.getEntity().getShooter())).entrySet()) {
-            entry.getKey().applyProjectileEffect(event.getEntity().getShooter(), entry.getValue(), event);
+        for (Map.Entry<CustomEnchantment, Integer> entry : getValidEnchantments(getItems((LivingEntity) event.getEntity().getShooter())).entrySet()) {
+            entry.getKey().applyProjectileEffect((LivingEntity) event.getEntity().getShooter(), entry.getValue(), event);
         }
     }
 
@@ -264,8 +272,7 @@ public class EListener implements Listener {
      */
     @EventHandler
     public void onClick(InventoryClickEvent event) {
-        Inventory inv = event.getInventory();
-        if (event.getInventory().getType() == InventoryType.ENCHANTING && event.isShiftClick()) {
+        if (event.getInventory().getType() == InventoryType.ENCHANTING) {
             if (tasks.containsKey(event.getWhoClicked().getName())) {
                 tasks.get(event.getWhoClicked().getName()).restore();
             }

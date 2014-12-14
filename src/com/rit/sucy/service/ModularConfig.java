@@ -1,12 +1,13 @@
 package com.rit.sucy.service;
 
-import com.rit.sucy.EnchantmentAPI;
-import org.bukkit.configuration.ConfigurationSection;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
+import org.bukkit.configuration.ConfigurationSection;
+
+import com.rit.sucy.EnchantmentAPI;
 
 /**
  * Modular configuration class that utilizes a ConfigNode enumeration as easy

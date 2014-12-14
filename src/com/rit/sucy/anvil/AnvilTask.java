@@ -1,4 +1,4 @@
-package com.rit.sucy.Anvil;
+package com.rit.sucy.anvil;
 
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;

@@ -1,13 +1,16 @@
-package com.rit.sucy.Anvil;
+package com.rit.sucy.anvil;
 
-import com.rit.sucy.CustomEnchantment;
-import com.rit.sucy.EnchantmentAPI;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.*;
+import com.rit.sucy.CustomEnchantment;
+import com.rit.sucy.EnchantmentAPI;
 
 /**
  * Custom implementation of anvil mechanics to accommodate for custom enchantments

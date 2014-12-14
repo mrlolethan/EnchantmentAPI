@@ -1,15 +1,16 @@
 package com.rit.sucy.service;
 
-import com.rit.sucy.EnchantmentAPI;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.rit.sucy.EnchantmentAPI;
 
 /**
  * Abstract class to handle the majority of the logic dealing with commands.

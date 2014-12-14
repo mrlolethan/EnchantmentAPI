@@ -1,9 +1,10 @@
 package com.rit.sucy;
 
-import com.rit.sucy.service.ENameParser;
-import com.rit.sucy.service.ERomanNumeral;
-import com.rit.sucy.service.MaterialClass;
-import com.rit.sucy.service.MaterialsParser;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -20,10 +21,10 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.rit.sucy.service.ENameParser;
+import com.rit.sucy.service.ERomanNumeral;
+import com.rit.sucy.service.MaterialClass;
+import com.rit.sucy.service.MaterialsParser;
 
 /**
  * Base class for custom enchantments

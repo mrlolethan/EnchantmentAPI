@@ -1,8 +1,9 @@
 package com.rit.sucy.service;
 
-import com.rit.sucy.EnchantmentAPI;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+
+import com.rit.sucy.EnchantmentAPI;
 
 /**
  * Represents a command.

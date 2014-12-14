@@ -1,17 +1,18 @@
 package com.rit.sucy.commands;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+
 import com.rit.sucy.CustomEnchantment;
 import com.rit.sucy.EnchantmentAPI;
 import com.rit.sucy.enchanting.VanillaEnchantment;
 import com.rit.sucy.service.ICommand;
 import com.rit.sucy.service.PermissionNode;
-import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 
 /**
  * List all custom Enchantments

@@ -1,10 +1,11 @@
 package com.rit.sucy.enchanting;
 
+import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+
 import com.rit.sucy.CustomEnchantment;
 import com.rit.sucy.service.ItemSets;
 import com.rit.sucy.service.SuffixGroups;
-import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 
 /**
  * Holds information about Enchantments in the vanilla game

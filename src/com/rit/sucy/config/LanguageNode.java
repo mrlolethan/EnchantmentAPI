@@ -1,9 +1,9 @@
 package com.rit.sucy.config;
 
-import com.rit.sucy.service.ConfigNode;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.rit.sucy.service.ConfigNode;
 
 public enum LanguageNode implements ConfigNode {
 

@@ -1,10 +1,8 @@
 package com.rit.sucy.commands;
 
-import com.rit.sucy.CustomEnchantment;
-import com.rit.sucy.EnchantmentAPI;
-import com.rit.sucy.config.RootConfig;
-import com.rit.sucy.config.RootNode;
-import com.rit.sucy.enchanting.EEnchantTable;
+import java.text.DecimalFormat;
+import java.util.Hashtable;
+import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -12,9 +10,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.text.DecimalFormat;
-import java.util.Hashtable;
-import java.util.Map;
+import com.rit.sucy.CustomEnchantment;
+import com.rit.sucy.EnchantmentAPI;
+import com.rit.sucy.config.RootConfig;
+import com.rit.sucy.config.RootNode;
+import com.rit.sucy.enchanting.EEnchantTable;
 
 /**
  * Displays a graph for the probabilities of an enchantment on a weapon

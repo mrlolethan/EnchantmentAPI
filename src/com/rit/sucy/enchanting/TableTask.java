@@ -1,8 +1,8 @@
 package com.rit.sucy.enchanting;
 
-import com.rit.sucy.EUpdateTask;
-import com.rit.sucy.EnchantmentAPI;
-import com.rit.sucy.config.LanguageNode;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -13,8 +13,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.rit.sucy.EUpdateTask;
+import com.rit.sucy.EnchantmentAPI;
+import com.rit.sucy.config.LanguageNode;
 
 public class TableTask extends BukkitRunnable {
 

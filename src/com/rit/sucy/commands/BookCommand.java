@@ -1,10 +1,8 @@
 package com.rit.sucy.commands;
 
-import com.rit.sucy.CustomEnchantment;
-import com.rit.sucy.EnchantmentAPI;
-import com.rit.sucy.enchanting.VanillaEnchantment;
-import com.rit.sucy.service.ENameParser;
-import com.rit.sucy.service.ICommand;
+import java.util.ArrayList;
+import java.util.Collections;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -13,8 +11,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import com.rit.sucy.CustomEnchantment;
+import com.rit.sucy.EnchantmentAPI;
+import com.rit.sucy.enchanting.VanillaEnchantment;
+import com.rit.sucy.service.ENameParser;
+import com.rit.sucy.service.ICommand;
 
 /**
  * Provides the executor with a book containing descriptions for all enchantments

@@ -1,6 +1,8 @@
-package com.rit.sucy.Anvil;
+package com.rit.sucy.anvil;
 
-import com.rit.sucy.EUpdateTask;
+import java.util.Hashtable;
+import java.util.UUID;
+
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -13,13 +15,13 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
-import java.util.Hashtable;
+import com.rit.sucy.EUpdateTask;
 
 public class AnvilListener implements Listener {
 
     private final Plugin plugin;
 
-    private final Hashtable<String, AnvilTask> tasks = new Hashtable<String, AnvilTask>();
+    private final Hashtable<UUID, AnvilTask> tasks = new Hashtable<UUID, AnvilTask>();
 
     public AnvilListener(Plugin plugin) {
         this.plugin = plugin;
@@ -34,16 +36,16 @@ public class AnvilListener implements Listener {
     @EventHandler
     public void onOpen(InventoryOpenEvent event) {
         if (event.getInventory().getType() == InventoryType.ANVIL) {
-            Player player = plugin.getServer().getPlayer(event.getPlayer().getName());
+            Player player = (Player) event.getPlayer();
 
             if (plugin.getServer().getVersion().contains("MC: 1.7.2")) {
                 MainAnvil anvil = new MainAnvil(plugin, event.getInventory(), player);
-                tasks.put(player.getName(), new AnvilTask(plugin, anvil));
+                tasks.put(player.getUniqueId(), new AnvilTask(plugin, anvil));
             }
             else {
                 event.setCancelled(true);
                 CustomAnvil anvil = new CustomAnvil(plugin, player);
-                tasks.put(player.getName(), new AnvilTask(plugin, anvil));
+                tasks.put(player.getUniqueId(), new AnvilTask(plugin, anvil));
             }
         }
     }
@@ -55,10 +57,10 @@ public class AnvilListener implements Listener {
      */
     @EventHandler
     public void onClose(InventoryCloseEvent event) {
-        if (tasks.containsKey(event.getPlayer().getName())) {
-            tasks.get(event.getPlayer().getName()).getView().close();
-            tasks.get(event.getPlayer().getName()).cancel();
-            tasks.remove(event.getPlayer().getName());
+        if (tasks.containsKey(event.getPlayer().getUniqueId())) {
+            tasks.get(event.getPlayer().getUniqueId()).getView().close();
+            tasks.get(event.getPlayer().getUniqueId()).cancel();
+            tasks.remove(event.getPlayer().getUniqueId());
         }
     }
 
@@ -69,38 +71,23 @@ public class AnvilListener implements Listener {
      */
     @EventHandler
     public void onClick(InventoryClickEvent event) {
-        Player player = plugin.getServer().getPlayer(event.getWhoClicked().getName());
+        Player player = (Player) event.getWhoClicked();
 
         // Make sure the inventory is the custom inventory
-        if (tasks.containsKey(player.getName()) && !plugin.getServer().getVersion().contains("MC: 1.7.2")) {
-            if (tasks.get(player.getName()).getView().getInventory().getName().equals(event.getInventory().getName())) {
-                AnvilView view = tasks.get(player.getName()).getView();
+        if (tasks.containsKey(player.getUniqueId()) && !plugin.getServer().getVersion().contains("MC: 1.7.2")) {
+            if (tasks.get(player.getUniqueId()).getView().getInventory().getName().equals(event.getInventory().getName())) {
+                AnvilView view = tasks.get(player.getUniqueId()).getView();
                 ItemStack[] inputs = view.getInputSlots();
                 boolean top = event.getRawSlot() < view.getInventory().getSize();
                 if (event.getSlot() == -999) return;
 
-                if (event.isShiftClick()) {
-
-                    if (event.getRawSlot() == view.getResultSlotID() && isFilled(view.getResultSlot())) {
-                        if (player.getGameMode() != GameMode.CREATIVE && (view.getRepairCost() > player.getLevel() || view.getRepairCost() >= 40)) {
-                            event.setCancelled(true);
-                        }
-                        else {
-                            view.clearInputs();
-                            if (player.getGameMode() != GameMode.CREATIVE)
-                                player.setLevel(player.getLevel() - view.getRepairCost());
-                        }
-                    }
-
-                    // Don't allow clicking in other slots in the anvil
-                    else if (top && !view.isInputSlot(event.getSlot())) {
-                        event.setCancelled(true);
-                    }
-
-                    // Don't allow shift clicking into the product slot
-                    else if (!top && areFilled(inputs[0], inputs[1])) {
-                        event.setCancelled(true);
-                    }
+                // Don't allow clicking in other slots in the anvil
+                if (top && !view.isInputSlot(event.getSlot()) && event.getSlot() != view.getResultSlotID()) {
+                    event.setCancelled(true);
+                }
+                // Don't allow shift clicking into the product slot
+                else if (!top && event.isShiftClick()) {
+                    event.setCancelled(true);
                 }
                 else if (event.isLeftClick()) {
 
@@ -115,14 +102,18 @@ public class AnvilListener implements Listener {
                                 player.setLevel(player.getLevel() - view.getRepairCost());
                         }
                     }
-
-                    // Don't allow clicks in other slots of the anvil
-                    else if (top && !view.isInputSlot(event.getSlot())) {
-                        event.setCancelled(true);
-                    }
                 }
-                else if (event.isRightClick()) {
-                    if (top) event.setCancelled(true);
+                else {
+                    if (event.getRawSlot() == view.getResultSlotID() && isFilled(view.getResultSlot())) {
+                    	if (player.getGameMode() != GameMode.CREATIVE && (view.getRepairCost() > player.getLevel() || view.getRepairCost() >= 40)) {
+                        	event.setCancelled(true);
+                    	}
+                    	else {
+                        	view.clearInputs();
+                        	if (player.getGameMode() != GameMode.CREATIVE)
+                        	    player.setLevel(player.getLevel() - view.getRepairCost());
+                    	}
+                	}
                 }
 
                 // Update the inventory manually after the click has happened

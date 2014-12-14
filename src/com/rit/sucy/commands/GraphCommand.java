@@ -1,14 +1,15 @@
 package com.rit.sucy.commands;
 
-import com.rit.sucy.CustomEnchantment;
-import com.rit.sucy.EnchantmentAPI;
-import com.rit.sucy.service.ENameParser;
-import com.rit.sucy.service.ICommand;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.inventory.ItemStack;
+
+import com.rit.sucy.CustomEnchantment;
+import com.rit.sucy.EnchantmentAPI;
+import com.rit.sucy.service.ENameParser;
+import com.rit.sucy.service.ICommand;
 
 /**
  * Displays a graph to the sender for the probability statistics for an item's enchantment
